@@ -30,3 +30,37 @@ function customFunction(a: number, b: number, calc: AddFunction): number {
   return result;
 }
 
+//generic types
+
+type DataStore<T> = {
+  storage: T[];
+  name: T;
+  addFunctionToArray: (item: T) => [];
+};
+
+const dataUser: DataStore<string> = {
+  storage: [],
+  name: "mahdi",
+  addFunctionToArray(item) {
+    return this.storage.push(item);
+  },
+};
+
+dataUser.addFunctionToArray("mahdi");
+dataUser.addFunctionToArray("ali");
+console.log(dataUser.storage);
+
+//genericFunctions
+
+function merge<T, U>(a: T, b: U) {
+  return {
+    ...a,
+    ...b,
+  };
+}
+
+const newFunction = merge<{ name: string }, { age: number }>(
+  { name: "mahdi" },
+  { age: 32 }
+);
+console.log(newFunction);
